@@ -108,6 +108,14 @@ function mascaraTelefone(event) {
     if (!["Backspace", "Delete", "Tab"].includes(tecla)) {
     return false;
     }
+}
+function validaSenhas() {
+    var senha = document.getElementById("senha").value;
+    var confirmaSenha = document.getElementById("confirma_senha").value;
+    if (senha !== confirmaSenha) {
+      alert("As senhas não são iguais!");
+      return false;
     }
-
+    return true;
+  }
 

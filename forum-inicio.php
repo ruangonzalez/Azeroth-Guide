@@ -17,18 +17,20 @@
                 <div class="buttons">
                     <a class="btn" id="botao-home" href="index.html">Home</a>
                     <a class="btn" id="botao-noticias" href="#container-news">News</a>
-                    <a class="btn" href="forum-inicio.php">Contact</a>
+                    <a class="btn" href="forum-inicio.php">Forum</a>
                     <a class="btn" href="about.html">About</a>
                 </div>
             </header>
         </div>
         <div class="box">
+            <div class="coisas hidden">
                 <h2>Seja bem-vindo!</h2>
                 <p>Aqui você pode compartilhar suas experiências, dicas e tirar dúvidas sobre os destinos mais incríveis de Azeroth.</p>
                 <div class="buttons">
                 <a class="btn" href="login.php">Login</a>
                 <a class="btn" href="formulario.php">Registrar</a>           
                 </div>       
+            </div>
         </div>
     </body>
 </html>

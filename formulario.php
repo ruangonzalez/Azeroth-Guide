@@ -1,3 +1,19 @@
+<?php
+
+    if(isset($_POST['submit']))
+    {
+        include_once('config.php');
+
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+
+        $result = mysqli_query($conexao, "INSERT INTO usuarios(nome, email, senha) 
+        VALUES('$nome', '$email', '$senha')");
+        $conexao -> close();
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,8 +34,35 @@
                     <div class="buttons">
                         <a class="btn" id="botao-home" href="index.html">Home</a>
                         <a class="btn" id="botao-noticias" href="#container-news">News</a>
-                        <a class="btn" href="form.html">Contact</a>
+                        <a class="btn" href="forum-inicio.php">Forum</a>
                         <a class="btn" href="about.html">About</a>
                     </div>
                 </header>
             </div>
+            <div class="boxform">
+                <form action="formulario.php" method="POST">
+                    <div class="coisas hidden">
+                        <h2>Registre-se</h2>
+                        <div class="inputbox">
+                            <label for="nome">Nome:</label><br>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="inputbox">
+                            <label for="email">Email:</label><br>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="inputbox">
+                            <label for="senha">Senha:</label><br>
+                            <input type="password" id="senha" name="senha" required>
+                        </div>
+                        <div class="inputbox">
+                            <label for="confirma-senha">Confirme sua senha:</label><br>
+                            <input type="password" id="confirma-senha" name="confirma-senha" required>
+                        </div>
+                        <button class="btn" type="submit" name="submit" id="submit">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

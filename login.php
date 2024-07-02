@@ -18,8 +18,27 @@
                     <div class="buttons">
                         <a class="btn" id="botao-home" href="index.html">Home</a>
                         <a class="btn" id="botao-noticias" href="#container-news">News</a>
-                        <a class="btn" href="form.html">Contact</a>
+                        <a class="btn" href="forum-inicio.php">Forum</a>
                         <a class="btn" href="about.html">About</a>
                     </div>
                 </header>
             </div>
+            <div class="boxlogin">
+                <form action="login.php" method="POST">
+                    <div class="coisas hidden">
+                        <h2>Login</h2>
+                        <div class="inputboxlogin">
+                            <label for="email">Email:</label><br>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="inputboxlogin">
+                            <label for="senha">Senha:</label><br>
+                            <input type="password" id="senha" name="senha" required>
+                        </div>
+                        <button class="btn" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html> 
