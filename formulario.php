@@ -6,10 +6,12 @@
 
         $nome = $_POST['nome'];
         $email = $_POST['email'];
+        $login = $_POST['login_user'];
         $senha = $_POST['senha'];
+        $senhaHash = md5($senha);
 
-        $result = mysqli_query($conexao, "INSERT INTO usuarios(nome, email, senha) 
-        VALUES('$nome', '$email', '$senha')");
+        $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,login,senha) 
+        VALUES('$nome','$email','$login','$senhaHash')");
         $conexao -> close();
     }
 ?>
@@ -52,12 +54,12 @@
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="inputbox">
-                            <label for="senha">Senha:</label><br>
-                            <input type="password" id="senha" name="senha" required>
+                            <label for="login_user">Login:</label><br>
+                            <input id="login_user type="login_user" name="login_user" required>
                         </div>
                         <div class="inputbox">
-                            <label for="confirma-senha">Confirme sua senha:</label><br>
-                            <input type="password" id="confirma-senha" name="confirma-senha" required>
+                            <label for="senha">Senha:</label><br>
+                            <input type="password" id="senha" name="senha" required>
                         </div>
                         <button class="btn" type="submit" name="submit" id="submit">Registrar</button>
                     </div>
