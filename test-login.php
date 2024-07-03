@@ -28,7 +28,10 @@
         }
         else
         {
+            $row = $result->fetch_assoc();
             $_SESSION['login'] = $login;
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['username'] = $row['nome'];
             $_SESSION['senha'] = $senhaHash;
             header('Location: forum.php');
         }

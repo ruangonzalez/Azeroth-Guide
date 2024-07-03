@@ -109,3 +109,13 @@ function mascaraTelefone(event) {
     return false;
     }
 }
+document.getElementById('postForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var message = document.getElementById('message').value;
+
+    if (message.trim() !== '') {
+        this.submit();
+    } else {
+        alert('Por favor, escreva uma mensagem antes de publicar.');
+    }
+});

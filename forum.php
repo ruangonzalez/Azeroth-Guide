@@ -1,6 +1,7 @@
 <?php
     session_start();
-    // print_r($_SESSION);
+    include 'config.php';
+
     if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
     {
         unset($_SESSION['login']);
@@ -23,7 +24,6 @@
         <title>Guia de Viagem para Azeroth</title>
     </head>
     <body>
-        <div class="content">
             <div class="header">
                 <header>
                     <h1>Guia de Viagem para Azeroth</h1>
@@ -36,27 +36,42 @@
                 </header>
             </div>
             <div class="boxforum">
-                <form action="forum.php" method="POST">
                     <div class="coisas hidden">
-                        <h2>Forum</h2>
-                        <div class="inputbox">
-                            <label for="titulo">Título:</label><br>
-                            <input type="text" id="titulo" name="titulo" required>
-                        </div>
-                        <div class="inputbox">
-                            <label for="mensagem">Mensagem:</label><br>
-                            <textarea id="mensagem" name="mensagem" required></textarea>
-                        </div>
-                        <button class="btn" type="submit" name="submit">Enviar</button>
-                    </div>
-                </form>
+                        <h1>Fórum</h1>
+                        <form id="postForm" method="POST" action="post_message.php">
+                            <textarea name="message" id="message" rows="5" placeholder="Escreva sua mensagem aqui..."></textarea>
+                            <button type="submit">Publicar</button>
+                        </form>
+                        <div id="posts">
+                            <?php
+                            $sql = "SELECT username, message, data FROM forum_posts ORDER BY data DESC";
+                            $result = $conexao->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                echo "<div class='post'>";
+                                echo "<p class='username'>" . htmlspecialchars($row['username']) . "</p>";
+                                echo "<p class='message'>" . htmlspecialchars($row['message']) . "</p>";
+                                echo "<p class='timestamp'>" . htmlspecialchars($row['data']) . "</p>";
+                                echo "</div>";
+                                }
+                            } else {
+                                echo "<p>Nenhuma mensagem ainda.</p>";
+                            }
+                        
+                            $conexao->close();
+                            ?>
+                        </div>     <!-- Mensagens do fórum serão carregadas aqui -->
+                    </div>              
             </div>
             <?php
                 echo "<h1>Bem vindo, . $logado</h1>";
+                echo "<pre>";
+                print_r($_SESSION);
+                echo "</pre>";
             ?>
             <div class="botaosair">
                 <a class="btn" href="logout.php">Sair</a>
             </div>
-        </div>
     </body>
 </html>
