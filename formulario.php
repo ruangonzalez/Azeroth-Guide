@@ -13,6 +13,8 @@
         $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,login,senha) 
         VALUES('$nome','$email','$login','$senhaHash')");
         $conexao -> close();
+
+        header('Location: login.php');
     }
 ?>
 

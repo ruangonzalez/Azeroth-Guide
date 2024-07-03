@@ -621,6 +621,43 @@ main p {
     border: 2px solid #ffffff;
     width: 30%;
 }
+/* CSS - forum.php */
+.boxforum {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20%;
+    transform: translate(-50%, -50%);
+}
+.boxforum h2 {
+    border: 2px solid #ffffff;
+    background-color: #272727;
+    width: 60%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.inputboxforum {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    text-align: center;
+}
+.boxforum button {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.boxforum .btn {
+    border: 2px solid #ffffff;
+    width: 30%;
+}
+
 footer {
     display: flex;
     justify-content: center;

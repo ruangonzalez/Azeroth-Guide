@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    // print_r($_SESSION);
+    if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+    {
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('Location:login.php');
+    }
+    $logado = $_SESSION['login'];
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,22 +35,28 @@
                     </div>
                 </header>
             </div>
-            <div class="boxlogin">
-                <form action="test-login.php" method="POST">
+            <div class="boxforum">
+                <form action="forum.php" method="POST">
                     <div class="coisas hidden">
-                        <h2>Entrar</h2>
-                        <div class="inputboxlogin">
-                            <label for="login_user">Login:</label><br>
-                            <input type="login_user" id="login_user" name="login_user" required>
+                        <h2>Forum</h2>
+                        <div class="inputbox">
+                            <label for="titulo">Título:</label><br>
+                            <input type="text" id="titulo" name="titulo" required>
                         </div>
-                        <div class="inputboxlogin">
-                            <label for="senha">Senha:</label><br>
-                            <input type="password" id="senha" name="senha" required>
+                        <div class="inputbox">
+                            <label for="mensagem">Mensagem:</label><br>
+                            <textarea id="mensagem" name="mensagem" required></textarea>
                         </div>
-                        <button class="btn" type="submit" name="submit">Entrar</button>
+                        <button class="btn" type="submit" name="submit">Enviar</button>
                     </div>
                 </form>
             </div>
+            <?php
+                echo "<h1>Bem vindo, . $logado</h1>";
+            ?>
+            <div class="botaosair">
+                <a class="btn" href="logout.php">Sair</a>
+            </div>
         </div>
     </body>
-</html> 
+</html>
