@@ -36,42 +36,50 @@
                 </header>
             </div>
             <div class="boxforum">
-                    <div class="coisas hidden">
-                        <h1>Fórum</h1>
-                        <form id="postForm" method="POST" action="post_message.php">
-                            <textarea name="message" id="message" rows="5" placeholder="Escreva sua mensagem aqui..."></textarea>
-                            <button type="submit">Publicar</button>
-                        </form>
-                        <div id="posts">
-                            <?php
-                            $sql = "SELECT username, message, data FROM forum_posts ORDER BY data DESC";
-                            $result = $conexao->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
+                <div class="forum-header">
+                    <?php
+                    echo "<div class='bemvindo'> <h1>Bem vindo, $logado</h1> </div>";
+                    echo "<div class='forum-titulo'> <h1>Fórum</h1> </div>";
+                    ?>
+                </div>
+                <div class="forum-actions">
+                    <form id="postForm" method="POST" action="post_message.php">
+                        <textarea name="message" id="message" rows="5" placeholder="Escreva sua mensagem aqui..."></textarea>
+                        <div class="action-buttons">
+                            <div class="botaosair">
+                                <a class="btn" href="logout.php">Sair</a>
+                            </div>
+                            <div class="botaoenviar">
+                                <button class="btn" type="submit">Publicar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="posts">
+                        <?php
+                        $sql = "SELECT username, message, data FROM forum_posts ORDER BY data DESC";
+                        $result = $conexao->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
                                 echo "<div class='post'>";
                                 echo "<p class='username'>" . htmlspecialchars($row['username']) . "</p>";
                                 echo "<p class='message'>" . htmlspecialchars($row['message']) . "</p>";
                                 echo "<p class='timestamp'>" . htmlspecialchars($row['data']) . "</p>";
                                 echo "</div>";
-                                }
-                            } else {
-                                echo "<p>Nenhuma mensagem ainda.</p>";
                             }
-                        
-                            $conexao->close();
-                            ?>
-                        </div>     <!-- Mensagens do fórum serão carregadas aqui -->
-                    </div>              
+                        } else {
+                            echo "<p>Nenhuma mensagem ainda.</p>";
+                        }
+                        $conexao->close();
+                        ?>
+                </div>
             </div>
             <?php
-                echo "<h1>Bem vindo, . $logado</h1>";
-                echo "<pre>";
-                print_r($_SESSION);
-                echo "</pre>";
+                echo "<div class='bemvindo'> <h1>Bem vindo, $logado</h1> </div>";
+                // echo "<pre>";
+                // print_r($_SESSION);
+                // echo "</pre>";
             ?>
-            <div class="botaosair">
-                <a class="btn" href="logout.php">Sair</a>
-            </div>
     </body>
 </html>
