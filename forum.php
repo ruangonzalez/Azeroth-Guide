@@ -75,11 +75,5 @@
                         ?>
                 </div>
             </div>
-            <?php
-                echo "<div class='bemvindo'> <h1>Bem vindo, $logado</h1> </div>";
-                // echo "<pre>";
-                // print_r($_SESSION);
-                // echo "</pre>";
-            ?>
     </body>
 </html>

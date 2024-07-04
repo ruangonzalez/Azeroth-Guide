@@ -688,7 +688,7 @@ textarea {
 }
 
 .posts {
-    max-height: 300px; 
+    max-height: 20%; 
     overflow-y: auto; 
     margin-top: 20px;
     padding-right: 10px; 
