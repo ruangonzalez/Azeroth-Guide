@@ -1,3 +1,9 @@
+<?php
+
+if(isset($_GET['error']) && $_GET['error'] === 'user_not_found') {
+    echo '<script>alert("Nenhum usuário encontrado com as informações fornecidas.");</script>';
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,6 +45,10 @@
                     </div>
                 </form>
             </div>
+            <div class="footer-login">
+                <footer>
+                    <p>Guia de Viagem para Azeroth &copy; 2024</p>
+                </footer>
         </div>
     </body>
 </html> 

@@ -25,22 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
     handleScroll(); 
 });
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById("botao-noticias").addEventListener("click", function() {
-        var homePath = '/';
-        var newsAnchor = '#news';
+    var botaoNoticias = document.getElementById("botao-noticias");
 
-        var currentPath = window.location.pathname;
+    botaoNoticias.addEventListener("click", function(event) {
+        event.preventDefault();
 
-        if (currentPath === homePath || currentPath === "/index.html") {
-        document.getElementById("news").scrollIntoView({ behavior: 'smooth' });
-        } else {
-            window.location.href = homePath + newsAnchor;
-        }
-        
-        if (window.location.hash === newsAnchor) {
-            document.getElementById("news").scrollIntoView({ behavior: 'smooth' });
-        }
+        var newsSection = document.getElementById('news');
+        newsSection.scrollIntoView({ behavior: 'smooth' });
     });
+    
 });
 document.addEventListener('DOMContentLoaded', function() {
     var botao_home = document.getElementById("botao-home");
@@ -117,5 +110,45 @@ document.getElementById('postForm').addEventListener('submit', function(e) {
         this.submit();
     } else {
         alert('Por favor, escreva uma mensagem antes de publicar.');
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var posts = document.querySelectorAll(".post");
+
+    posts.forEach(function(post) {
+        post.addEventListener("click", function() {
+            var buttons = this.querySelector(".post-buttons");
+            if (buttons.style.display === "none") {
+                buttons.style.display = "block";
+            } else {
+                buttons.style.display = "none";
+            }
+        });
+    });
+
+    var modal = document.getElementById("editModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    document.querySelectorAll(".edit-btn").forEach(function(editBtn) {
+        editBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+            var postId = this.getAttribute("data-id");
+            var postMessage = this.closest(".post").querySelector(".message").textContent;
+            document.getElementById("editId").value = postId;
+            document.getElementById("editMessage").value = postMessage;
+            modal.style.display = "block";
+        });
+    });
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 });

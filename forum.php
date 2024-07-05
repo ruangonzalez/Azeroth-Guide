@@ -9,6 +9,7 @@
         header('Location:login.php');
     }
     $logado = $_SESSION['login'];
+    $idlogado = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +58,7 @@
                 </div>
                 <div class="posts">
                         <?php
-                        $sql = "SELECT username, message, data FROM forum_posts ORDER BY data DESC";
+                        $sql = "SELECT id, user_id, username, message, data FROM forum_posts ORDER BY data DESC";
                         $result = $conexao->query($sql);
                         
                         if ($result->num_rows > 0) {
@@ -66,6 +67,12 @@
                                 echo "<p class='username'>" . htmlspecialchars($row['username']) . "</p>";
                                 echo "<p class='message'>" . htmlspecialchars($row['message']) . "</p>";
                                 echo "<p class='timestamp'>" . htmlspecialchars($row['data']) . "</p>";
+                                if ($row['user_id'] == $idlogado) {
+                                    echo "<div class='post-buttons' id='post-buttons'" . $row['id'] . "' style='display:none;'>";
+                                    echo "<a class='btn edit-btn' data-id='" . $row['id'] . "' href='#'>Editar</a> ";
+                                    echo "<a class='btn' href='delete_message.php?id=" . $row['id'] . "'>Apagar</a>";
+                                    echo "</div>";
+                                }
                                 echo "</div>";
                             }
                         } else {
@@ -74,6 +81,24 @@
                         $conexao->close();
                         ?>
                 </div>
+            </div>
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form id="editForm" method="POST" action="update_message.php">
+                        <textarea name="editMessage" id="editMessage" rows="5"></textarea>
+                        <input type="hidden" name="editId" id="editId">
+                        <div class="botaosalvar">
+                            <button type="submit" class="btn">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="footer-forum">
+                <footer>
+                    <p>Guia de Viagem para Azeroth &copy; 2024</p>
+                </footer>
             </div>
     </body>
 </html>

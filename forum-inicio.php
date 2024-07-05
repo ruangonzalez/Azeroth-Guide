@@ -32,5 +32,10 @@
                 </div>       
             </div>
         </div>
+        <div class="footer-inicio">
+            <footer>
+                <p>Guia de Viagem para Azeroth &copy; 2024</p>
+            </footer>
+        </div>
     </body>
 </html>
