@@ -8,7 +8,6 @@
         $senha = $_POST['senha'];
         $senhaHash = md5($senha);
 
-        // Verifica se o e-mail ou login já existem no banco de dados
         $query_email = "SELECT * FROM usuarios WHERE email = '$email'";
         $query_login = "SELECT * FROM usuarios WHERE login = '$login'";
 
@@ -20,7 +19,6 @@
         } elseif(mysqli_num_rows($result_login) > 0) {
             echo '<script>alert("Este login já está em uso. Por favor, escolha outro.");</script>';
         } else {
-            // Insere os dados no banco de dados se não houver duplicidade
             $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,login,senha) VALUES('$nome','$email','$login','$senhaHash')");
             $conexao->close();
             header('Location: login.php');
