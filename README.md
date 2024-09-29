@@ -28,19 +28,6 @@
   </li>
 </ol>
 
-<h2>📂 Estrutura do Projeto</h2>
-
-<pre>
-/azerothguide
-│
-├── /assets          # Imagens e outros recursos estáticos
-├── /includes        # Arquivos PHP incluídos
-├── /js              # Scripts JavaScript
-├── /css             # Estilos CSS
-├── index.php        # Página inicial
-├── forum.php        # Página do fórum
-└── locais.php       # Página de locais
-</pre>
 
 ---
 
